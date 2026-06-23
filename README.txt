@@ -1,0 +1,1 @@
+Adicione logo.png, recepcao.jpg, relaxamento.jpg, pilates.jpg e escalda.jpg na pasta img.
