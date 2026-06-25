@@ -455,3 +455,79 @@ footer { background: var(--preto); padding: 56px 8% 32px; color: rgba(255,255,25
 @media (prefers-reduced-motion: reduce) {
   *, .strip__track { animation: none !important; transition: none !important; }
 }
+
+/* ============================================================
+   REDES SOCIAIS
+   ============================================================ */
+.redes {
+  background: var(--cinza-esc);
+  padding: 80px 8%;
+}
+.redes__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.redes__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rede-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 16px 20px;
+  transition: background 0.22s, border-color 0.22s, transform 0.15s;
+  color: var(--branco);
+}
+.rede-btn:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: var(--ouro);
+  transform: translateX(4px);
+}
+.rede-btn__icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.rede-btn__icon--ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.rede-btn__icon--fb { background: #1877F2; }
+.rede-btn__icon--wa { background: #25D366; }
+.rede-btn__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.rede-btn__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--branco);
+  line-height: 1.2;
+}
+.rede-btn__handle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+  font-weight: 300;
+}
+.rede-btn__arrow {
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  transition: color 0.22s;
+}
+.rede-btn:hover .rede-btn__arrow {
+  color: var(--ouro);
+}
+
+@media (max-width: 900px) {
+  .redes__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
