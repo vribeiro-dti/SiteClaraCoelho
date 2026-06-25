@@ -89,7 +89,7 @@ Substitua a função `enviar()` em `main.js` por uma chamada à API de e-mail
 - HTML5 semântico com atributos ARIA (acessibilidade)
 - CSS3 com custom properties (sem frameworks)
 - JavaScript vanilla (sem bibliotecas externas)
-- Fontes: Cormorant Garamond + Inter (Google Fonts)
+- Fontes: Playfair Display + Inter (Google Fonts)
 - Dados estruturados (Schema.org — MedicalBusiness) para SEO
 - Política de privacidade em conformidade com LGPD (Lei 13.709/2018)
 

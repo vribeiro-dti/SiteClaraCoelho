@@ -8,7 +8,7 @@
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;1,400;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .priv-hero {
@@ -18,10 +18,10 @@
     }
     .priv-hero h1 {
       font-family: var(--serif);
-      font-size: clamp(32px,4vw,52px);
-      font-weight: 300; color: var(--branco); margin-bottom: 12px;
+      font-size: clamp(2rem,4vw,3.25rem);
+      font-weight: 800; color: var(--branco); margin-bottom: 12px;
     }
-    .priv-hero p { font-size: 14px; color: rgba(255,255,255,0.45); font-weight: 300; }
+    .priv-hero p { font-size: var(--text-sm); color: rgba(255,255,255,0.5); font-weight: 300; }
 
     .priv-body {
       padding: 72px 8%;
@@ -29,7 +29,7 @@
     }
     .priv-back {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 600; color: var(--ouro);
+      font-size: var(--text-label); font-weight: 700; color: var(--ouro);
       letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 48px;
       transition: color 0.2s;
@@ -40,15 +40,15 @@
       background: var(--ouro-pale);
       border-left: 3px solid var(--ouro);
       border-radius: 0 4px 4px 0;
-      padding: 20px 24px;
+      padding: 22px 28px;
       margin-bottom: 48px;
-      font-size: 14px; color: var(--cinza-med);
-      line-height: 1.8; font-weight: 300;
+      font-size: var(--text-base); color: var(--cinza-med);
+      line-height: var(--lh-loose); font-weight: 300;
     }
 
     .priv-body h2 {
       font-family: var(--serif);
-      font-size: 22px; font-weight: 400; color: var(--preto);
+      font-size: var(--text-lg); font-weight: 700; color: var(--preto);
       margin: 44px 0 14px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(196,154,42,0.2);
@@ -56,23 +56,23 @@
     }
     .priv-body h2 .num {
       font-family: var(--serif);
-      font-size: 28px; font-weight: 300;
-      color: rgba(196,154,42,0.35);
+      font-size: 2rem; font-weight: 700;
+      color: rgba(196,154,42,0.25);
       line-height: 1;
       flex-shrink: 0;
     }
     .priv-body h2:first-of-type { margin-top: 0; }
     .priv-body p {
-      font-size: 14px; color: var(--cinza-med);
-      line-height: 1.85; margin-bottom: 14px; font-weight: 300;
+      font-size: var(--text-base); color: var(--cinza-med);
+      line-height: var(--lh-loose); margin-bottom: 16px; font-weight: 300;
     }
     .priv-body ul {
       padding-left: 0; margin-bottom: 16px;
       list-style: none; display: flex; flex-direction: column; gap: 8px;
     }
     .priv-body li {
-      font-size: 14px; color: var(--cinza-med);
-      line-height: 1.75; font-weight: 300;
+      font-size: var(--text-base); color: var(--cinza-med);
+      line-height: var(--lh-relaxed); font-weight: 300;
       display: flex; align-items: flex-start; gap: 10px;
     }
     .priv-body li::before {
@@ -97,23 +97,23 @@
     }
     .priv-contato__item { }
     .priv-contato__label {
-      font-size: 9px; font-weight: 600;
-      color: var(--ouro); letter-spacing: 0.16em;
+      font-size: var(--text-label); font-weight: 700;
+      color: var(--ouro); letter-spacing: var(--ls-wider);
       text-transform: uppercase; margin-bottom: 6px;
     }
     .priv-contato__value {
-      font-size: 13px; color: rgba(255,255,255,0.75);
-      line-height: 1.6; font-weight: 300;
+      font-size: var(--text-sm); color: rgba(255,255,255,0.8);
+      line-height: var(--lh-normal); font-weight: 300;
     }
     .priv-contato__value a { color: var(--ouro-claro); }
 
     .priv-acordo {
       margin-top: 40px;
-      padding: 20px 24px;
+      padding: 22px 28px;
       border: 1px solid rgba(196,154,42,0.25);
       border-radius: 4px;
-      font-size: 13px; color: var(--cinza-med);
-      line-height: 1.75; font-weight: 300;
+      font-size: var(--text-sm); color: var(--cinza-med);
+      line-height: var(--lh-relaxed); font-weight: 300;
       font-style: italic;
     }
 
@@ -287,7 +287,7 @@
       <ul class="footer__links">
         <li><a href="tel:+551145568632">(11) 4556-8632</a></li>
         <li><a href="mailto:fisioterapiaifcc@gmail.com">fisioterapiaifcc@gmail.com</a></li>
-        <li style="color:rgba(255,255,255,.4);font-size:12px">Rua Rubens do Amaral, 106</li>
+        <li style="color:rgba(255,255,255,.4);font-size:var(--text-xs)">Rua Rubens do Amaral, 106</li>
         <li style="color:rgba(255,255,255,.4);font-size:12px">Bela Vista &middot; Osasco &middot; SP</li>
       </ul>
     </div>
