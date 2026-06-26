@@ -187,14 +187,14 @@ button { cursor: pointer; font-family: var(--sans); }
    HERO
    ============================================================ */
 .hero {
-  min-height: 85svh;
+  min-height: 72svh;
   background: var(--preto);
   display: grid; grid-template-columns: 48% 52%;
   position: relative; overflow: hidden;
 }
 .hero__left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 90px 7% 52px 8%; position: relative; z-index: 2;
+  padding: 76px 7% 40px 8%; position: relative; z-index: 2;
 }
 .hero__linha { width: 44px; height: 1px; background: var(--ouro); margin-bottom: 28px; }
 .hero__eyebrow { font-size: var(--text-label); font-weight: 600; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--ouro); margin-bottom: 18px; }
@@ -312,8 +312,8 @@ button { cursor: pointer; font-family: var(--sans); }
 .cred__sub { font-size: var(--text-sm); color: rgba(255,255,255,0.45); font-weight: 300; }
 .sobre__fotos {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 220px 280px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 300px 260px;
   gap: 4px;
 }
 .sfoto {
@@ -326,8 +326,47 @@ button { cursor: pointer; font-family: var(--sans); }
   transition: transform 0.55s ease, filter 0.4s ease;
 }
 .sfoto:hover img { transform: scale(1.04); filter: brightness(0.94) saturate(1.05); }
-/* Studio de Pilates — ocupa toda a linha do topo (3 colunas) */
-.sfoto--top { grid-column: span 3; }
+/* Cadeira — coluna esquerda inteira (2 linhas) */
+.sfoto--full {
+  grid-row: span 2;
+}
+/* Studio — coluna direita, linha de cima */
+.sfoto--right-top {
+  /* ocupa uma célula normal */
+}
+/* Massagem e Escalda — coluna direita, linha de baixo, sub-grid 2 cols */
+.sfoto--right-bot {
+  /* each takes half the right column via nested approach */
+}
+/* Sub-grid na direita inferior: massagem + escalda lado a lado */
+.sobre__fotos {
+  grid-template-areas:
+    "cadeira studio"
+    "cadeira bot";
+}
+.sfoto--full       { grid-area: cadeira; }
+.sfoto--right-top  { grid-area: studio; }
+/* Bot row: use a nested grid for the 2 bottom-right photos */
+.sfoto--right-bot:nth-child(3),
+.sfoto--right-bot:nth-child(4) {
+  grid-area: bot;
+}
+/* Override: use a subgrid wrapper approach with pure CSS grid */
+/* Simpler: 3-col grid, cadeira spans rows */
+.sobre__fotos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 300px 270px;
+  gap: 4px;
+  grid-template-areas:
+    "cadeira studio  studio"
+    "cadeira massag  escalda";
+}
+.sfoto--full      { grid-area: cadeira; }
+.sfoto--right-top { grid-area: studio; }
+.sfoto--massagem { grid-area: massag; }
+.sfoto--escalda  { grid-area: escalda; }
+.sfoto--top  { grid-column: span 3; }
 .sfoto--tall { grid-row: span 2; }
 .sfoto--wide { grid-column: span 2; }
 /* Label sobre foto */
@@ -374,9 +413,9 @@ button { cursor: pointer; font-family: var(--sans); }
 }
 .dep--destaque .dep__texto { color: rgba(255,255,255,0.88); font-size: clamp(1.125rem, 2vw, 1.375rem); }
 .dep__stars { color: var(--ouro); font-size: var(--text-sm); letter-spacing: 2px; margin-bottom: 8px; }
-.dep__nome { font-size: var(--text-base); font-weight: 700; color: var(--preto); }
+.dep__nome { font-size: var(--text-base); font-weight: 700; color: var(--cinza-esc); }
 .dep--destaque .dep__nome { color: var(--branco); }
-.dep__tipo { font-size: var(--text-sm); color: var(--cinza-lev); margin-top: 3px; }
+.dep__tipo { font-size: var(--text-sm); color: var(--cinza-med); margin-top: 3px; }
 .dep--destaque .dep__tipo { color: rgba(255,255,255,0.38); }
 .dep__big { font-family: var(--serif); font-size: clamp(4rem, 8vw, 6rem); font-weight: 700; color: rgba(196,154,42,0.1); line-height: 1; text-align: center; }
 .dep__big-lbl { font-size: var(--text-xs); color: rgba(255,255,255,0.28); text-align: center; letter-spacing: var(--ls-wide); text-transform: uppercase; }
@@ -489,12 +528,20 @@ footer { background: var(--preto); padding: 56px 8% 32px; color: rgba(255,255,25
   .hero { grid-template-columns: 1fr; }
   .hero__right { height: 45svh; }
   .hero__photo { height: 100%; }
-  .hero__left { padding: 80px 6% 40px; }
+  .hero__left { padding: 68px 6% 32px; }
   .sobre { grid-template-columns: 1fr; }
   .sobre__fotos {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 180px 220px;
+    grid-template-rows: 280px 200px 200px;
+    grid-template-areas:
+      'cadeira cadeira'
+      'studio  studio'
+      'massag  escalda';
   }
+  .sfoto--full      { grid-area: cadeira; }
+  .sfoto--right-top { grid-area: studio; }
+  .sfoto--massagem { grid-area: massag; }
+  .sfoto--escalda  { grid-area: escalda; }
   .sfoto--top { grid-column: span 2; }
   .sfoto--wide { grid-column: span 2; }
   .dep-grid { grid-template-columns: 1fr; }
@@ -626,36 +673,29 @@ footer { background: var(--preto); padding: 56px 8% 32px; color: rgba(255,255,25
 }
 
 /* Cards de números */
-.sobre-claara__deco {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.sobre-claara__img-wrap {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+  position: relative;
 }
-.sobre-claara__card {
-  background: var(--branco);
-  border: 1px solid rgba(196,154,42,0.2);
-  border-left: 3px solid var(--ouro);
-  border-radius: 3px;
-  padding: 22px 28px;
-  transition: border-color var(--transition), box-shadow var(--transition);
+.sobre-claara__img-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(196,154,42,0.2);
+  pointer-events: none;
 }
-.sobre-claara__card:hover {
-  box-shadow: 0 4px 20px rgba(196,154,42,0.12);
+.sobre-claara__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.6s ease;
 }
-.sobre-claara__card-num {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  font-weight: 700;
-  color: var(--ouro-escuro);
-  line-height: 1;
-  margin-bottom: 4px;
-  letter-spacing: -0.02em;
-}
-.sobre-claara__card-lbl {
-  font-size: var(--text-sm);
-  color: var(--cinza-med);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+.sobre-claara__img-wrap:hover .sobre-claara__img {
+  transform: scale(1.03);
 }
 
 @media (max-width: 900px) {
@@ -663,13 +703,8 @@ footer { background: var(--preto); padding: 56px 8% 32px; color: rgba(255,255,25
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .sobre-claara__deco {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .sobre-claara__card {
-    flex: 1;
-    min-width: 140px;
+  .sobre-claara__img-wrap {
+    max-height: 360px;
   }
   .sobre-claara__p { max-width: 100%; }
 }
